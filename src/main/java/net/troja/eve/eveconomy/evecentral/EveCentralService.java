@@ -19,8 +19,6 @@ public class EveCentralService {
 
     private static final String ADDRESS = "http://api.eve-central.com/api/marketstat/json?regionlimit=10000002";
 
-    // http://api.eve-central.com/api/marketstat/json?regionlimit=10000002&typeid=37&typeid=35
-
     private final RestTemplate restTemplate = new RestTemplate();
 
     public List<EveCentralData> getPrices(final List<Integer> typeIds) {
@@ -46,9 +44,6 @@ public class EveCentralService {
         final Map<Integer, EveCentralData> result = new HashMap<>();
         for (final EveCentralData entry : list) {
             final int type = entry.getBuy().getForQuery().getTypes()[0];
-            entry.getBuy().setForQuery(null);
-            entry.getSell().setForQuery(null);
-            entry.getAll().setForQuery(null);
             result.put(type, entry);
         }
         return result;

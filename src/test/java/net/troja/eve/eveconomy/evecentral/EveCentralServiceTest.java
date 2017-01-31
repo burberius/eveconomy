@@ -1,6 +1,5 @@
 package net.troja.eve.eveconomy.evecentral;
 
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -59,6 +58,5 @@ public class EveCentralServiceTest {
         assertThat(priceMap.size(), equalTo(1));
         final EveCentralData centralData = priceMap.get(123);
         assertThat(centralData, notNullValue());
-        assertThat(centralData.getAll().getForQuery(), nullValue());
     }
 }
