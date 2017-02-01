@@ -1,9 +1,11 @@
+## General
 This are information about the data used here and extracted from a Eve
 Online SDE MySQL database.
 
+## Material
 Material data can be extracted with the following query and should be saved
 as *src/main/resources/materials.json*:
-```
+```sql
 SELECT 
     m.typeID,
     i.typeName,
