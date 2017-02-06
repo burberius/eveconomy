@@ -29,3 +29,6 @@ nbdist/
 *.jar
 *.war
 *.ear
+
+# Configuration #
+application.properties

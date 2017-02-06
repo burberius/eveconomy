@@ -1,0 +1,12 @@
+flyway:
+  enabled: false
+
+security:
+  oauth2:
+    client:
+      clientId: overwrite-me
+      clientSecret: overwrite-me
+      accessTokenUri: https://login.eveonline.com/oauth/token
+      userAuthorizationUri: https://login.eveonline.com/oauth/authorize
+    resource:
+      userInfoUri: https://login.eveonline.com/oauth/verify
