@@ -1,0 +1,9 @@
+Scourge Fury Cruise Missile	20.743	Advanced Cruise Missile			1.037,15 m3
+Loot Mijory		Audit Log Secure Container			2.000.000 m3
+Standard Drop Booster	1	Booster		2 	1 m3
+Caldari Navy Nova Heavy Assault Missile	16.000	Heavy Assault Missile			240 m3
+Nanite Repair Paste	174	Nanite Repair Paste			1,74 m3
+Drone Cerebral Fragment	47	Rogue Drone Components			1,41 m3
+Drone Coronary Unit	20	Rogue Drone Components			1,60 m3
+Drone Tactical Limb	23	Rogue Drone Components			1,61 m3
+Elite Drone AI	1	Rogue Drone Components			0,01 m3

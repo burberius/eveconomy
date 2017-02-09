@@ -1,0 +1,9 @@
+Booster Délirium standard*	1	Booster*		2 	1 m³
+Bras tactique de drone*	23	Composants de drone renégat*			1,61 m³
+Fragment cérébral de drone*	47	Composants de drone renégat*			1,41 m³
+IA de drone élite*	1	Composants de drone renégat*			0,01 m³
+Loot Mijory		Conteneur sécurisé de journaux d'audit*			2.000.000 m³
+Missile d'assaut lourd Nova de la Caldari Navy*	16.000	Missile d'assaut lourd*			240 m³
+Missile de croisière Scourge Fury*	20.743	Missile de croisière avancé*			1.037,15 m³
+Nanites de réparation*	174	Nanites de réparation*			1,74 m³
+Unité coronarienne de drone*	20	Composants de drone renégat*			1,60 m³

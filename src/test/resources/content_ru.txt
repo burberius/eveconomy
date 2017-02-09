@@ -1,0 +1,9 @@
+Caldari Navy Nova Heavy Assault Missile*	16.000	Облегчённая ракета большой мощности*			240 м^3
+Drone Cerebral Fragment*	47	Компоненты восставших дронов*			1,41 м^3
+Drone Coronary Unit*	20	Компоненты восставших дронов*			1,60 м^3
+Drone Tactical Limb*	23	Компоненты восставших дронов*			1,61 м^3
+Elite Drone AI*	1	Компоненты восставших дронов*			0,01 м^3
+Loot Mijory		Защищенный контейнер с контролем доступа*			2.000.000 м^3
+Nanite Repair Paste*	174	Nanite Repair Paste*			1,74 м^3
+Scourge Fury Cruise Missile*	20.743	Спецракеты дальнего боя*			1.037,15 м^3
+Standard Drop Booster*	1	Бустер*		2 	1 м^3
