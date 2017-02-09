@@ -28,3 +28,42 @@ WHERE
         WHERE
             categoryID = 25 AND published = 1);
 ```
+
+## Types
+Save the result of the following query as *src/main/resources/types.json*:
+
+```sql
+SELECT 
+    i.typeID,
+    i.typeName,
+    i.volume,
+    i.iconID,
+    i.groupID,
+    g.groupName
+FROM
+    eve.invTypes i
+        JOIN
+    invGroups g ON i.groupID = g.groupID
+WHERE
+    i.published = 1
+ORDER BY i.typeID
+LIMIT 20000;
+```
+
+## Type translations
+Save the result of the following query as 
+*src/main/resources/typetranslations.json*:
+
+```sql
+SELECT 
+    i.typeID, t.languageID, t.text
+FROM
+    invTypes i
+        JOIN
+    eve.trnTranslations t ON i.typeID = t.keyID
+WHERE
+    i.published = 1
+        AND t.languageID IN ('de' , 'en', 'fr', 'ja', 'ru')
+        AND t.tcID = 8
+LIMIT 100000;
+```
