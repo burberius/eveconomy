@@ -14,6 +14,10 @@ import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticat
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import net.troja.eve.eveconomy.account.AccountRepository;
 
 @Configuration
 @EnableOAuth2Client
@@ -24,11 +28,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private AuthorizationCodeResourceDetails oauth2Client;
     @Autowired
     private ResourceServerProperties resourceProperties;
+    @Autowired
+    private AccountRepository accountRepository;
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.antMatcher("/**").authorizeRequests().antMatchers("/", "/login**", "/webjars/**").permitAll().anyRequest()
-                .authenticated().and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+                .authenticated().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/").permitAll().and().csrf()
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
+                .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
     }
 
     private Filter ssoFilter() {
@@ -39,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         final UserInfoTokenServices tokenServices = new UserInfoTokenServices(resourceProperties.getUserInfoUri(),
                 oauth2Client.getClientId());
         tokenServices.setRestTemplate(restTemplate);
-        tokenServices.setPrincipalExtractor(new CharacterInfoExtractor());
+        tokenServices.setPrincipalExtractor(new CharacterInfoExtractor(accountRepository));
         filter.setTokenServices(tokenServices);
         return filter;
     }
