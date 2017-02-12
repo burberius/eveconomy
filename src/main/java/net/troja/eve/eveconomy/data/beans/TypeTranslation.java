@@ -3,8 +3,11 @@ package net.troja.eve.eveconomy.data.beans;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
 
 @Entity
+@Table(indexes = { @Index(name = "IDX_TEXT", columnList = "text") })
 public class TypeTranslation {
     @Id
     @GeneratedValue

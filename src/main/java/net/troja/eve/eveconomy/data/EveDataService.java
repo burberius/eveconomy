@@ -48,7 +48,7 @@ public class EveDataService {
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private <T> void readDataIfNeeded(final CrudRepository repo, final String fileName, final Class<T> clazz) {
-        if (repo.count() == 0) {
+        if (repo != null && repo.count() == 0) {
             List<T> data = null;
             InputStream in = null;
             try {
