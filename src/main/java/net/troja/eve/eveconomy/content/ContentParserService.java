@@ -22,8 +22,9 @@ public class ContentParserService {
     public List<Content> parse(final String content) {
         final List<Content> list = new ArrayList<>();
         if (!StringUtils.isBlank(content)) {
-            try {
-                for (final String line : content.split("\n")) {
+
+            for (final String line : content.split("\n")) {
+                try {
                     final String[] cols = line.split("\t");
                     if (cols.length < 2) {
                         LOGGER.warn("Wrong number of columns: " + line);
@@ -38,10 +39,11 @@ public class ContentParserService {
                     }
                     final int quantity = Integer.parseInt(cols[1].replaceAll("[.,]", ""));
                     list.add(new Content(result.get(0).getTypeID(), name, quantity));
+                } catch (final Exception e) {
+                    LOGGER.warn("Could not parse pasted content: " + e.getMessage() + " of line '" + line + "'");
                 }
-            } catch (final Exception e) {
-                LOGGER.warn("Could not parse pasted content: " + e.getMessage(), e);
             }
+
         }
         return list;
     }
