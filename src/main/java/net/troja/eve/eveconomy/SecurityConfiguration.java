@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import net.troja.eve.eveconomy.account.AccessRepository;
 import net.troja.eve.eveconomy.account.AccountRepository;
 
 @Configuration
@@ -28,6 +29,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private AuthorizationCodeResourceDetails oauth2Client;
     @Autowired
     private ResourceServerProperties resourceProperties;
+    @Autowired
+    private AccessRepository accessRepository;
     @Autowired
     private AccountRepository accountRepository;
 
@@ -48,7 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         final UserInfoTokenServices tokenServices = new UserInfoTokenServices(resourceProperties.getUserInfoUri(),
                 oauth2Client.getClientId());
         tokenServices.setRestTemplate(restTemplate);
-        tokenServices.setPrincipalExtractor(new CharacterInfoExtractor(accountRepository));
+        tokenServices.setPrincipalExtractor(new CharacterInfoExtractor(accessRepository, accountRepository));
         filter.setTokenServices(tokenServices);
         return filter;
     }

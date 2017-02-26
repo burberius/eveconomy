@@ -1,48 +1,43 @@
 package net.troja.eve.eveconomy.account;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Account {
     @Id
-    private int characterId;
-    private String characterName;
-    private String characterOwnerHash;
+    @GeneratedValue
+    private int accountId;
+    private Date generated = new Date();
+    @OneToMany(mappedBy = "account")
+    private List<Access> accesses = new ArrayList<>();
     private String email;
     private boolean verified;
-    private Date created;
-    private Date lastLogin;
-    private boolean active = true;
 
-    public Account() {
-        super();
+    public Date getGenerated() {
+        return generated;
     }
 
-    public int getCharacterId() {
-        return characterId;
+    public void setGenerated(final Date generated) {
+        this.generated = generated;
     }
 
-    public void setCharacterId(final int characterId) {
-        this.characterId = characterId;
+    public List<Access> getAccesses() {
+        return accesses;
     }
 
-    public String getCharacterName() {
-        return characterName;
+    public void setAccesses(final List<Access> accesses) {
+        this.accesses = accesses;
     }
 
-    public void setCharacterName(final String characterName) {
-        this.characterName = characterName;
-    }
-
-    public String getCharacterOwnerHash() {
-        return characterOwnerHash;
-    }
-
-    public void setCharacterOwnerHash(final String characterOwnerHash) {
-        this.characterOwnerHash = characterOwnerHash;
+    public void addAccess(final Access access) {
+        accesses.add(access);
     }
 
     public String getEmail() {
@@ -61,34 +56,10 @@ public class Account {
         this.verified = verified;
     }
 
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(final Date created) {
-        this.created = created;
-    }
-
-    public Date getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(final Date lastLogin) {
-        this.lastLogin = lastLogin;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(final boolean active) {
-        this.active = active;
-    }
-
     @Override
     public String toString() {
-        return "Account [characterId=" + characterId + ", characterName=" + characterName + ", characterOwnerHash="
-                + characterOwnerHash + ", email=" + email + ", verified=" + verified + ", created=" + created
-                + ", lastLogin=" + lastLogin + ", active=" + active + "]";
+        return "Account [accountId=" + accountId + ", generated=" + generated + ", accesses=" + accesses + ", email="
+                + email + ", verified=" + verified + "]";
     }
+
 }

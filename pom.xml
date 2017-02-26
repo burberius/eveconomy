@@ -15,13 +15,13 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>1.4.3.RELEASE</version>
-    <relativePath /> <!-- lookup parent from repository -->
   </parent>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
+    <esi.version>1.1.0</esi.version>
   </properties>
 
   <dependencies>
@@ -76,6 +76,12 @@
       <optional>true</optional>
     </dependency>
 
+    <dependency>
+      <groupId>net.troja.eve</groupId>
+      <artifactId>eve-esi</artifactId>
+      <version>${esi.version}</version>
+    </dependency>
+    
     <!-- Tests -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -87,11 +93,6 @@
       <artifactId>hamcrest-all</artifactId>
       <version>1.3</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>net.troja.eve</groupId>
-      <artifactId>eve-esi</artifactId>
-      <version>0.2.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
